@@ -1,5 +1,5 @@
 // inverterPalavras.test.js
-import { inverterPalavras } from '../manipulacaostring'; // Ajuste o caminho se necessário
+import { inverterPalavras } from '../manipulacaostring'; 
 
 describe('Função inverterPalavras', () => {
     test('deve inverter uma frase curta', () => {
