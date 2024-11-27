@@ -19,4 +19,4 @@ describe('Função ordenarArray', () => {
         const esperado = [-2, -1, 3, 4];
         expect(ordenarArray(arr)).toEqual(esperado);
     });
-});
+});;
