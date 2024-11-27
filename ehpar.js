@@ -4,4 +4,7 @@ function ehPar(numero) {
     }
 }
 
-export{ehPar}
+export{
+    
+    ehPar
+}
