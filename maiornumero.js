@@ -1,4 +1,4 @@
-export function maiorNumero(array) {
+ function maiorNumero(array) {
     if (!Array.isArray(array) || array.length === 0) {
         throw new Error('O argumento deve ser um array não vazio.');
     }
@@ -6,4 +6,8 @@ export function maiorNumero(array) {
         throw new Error('Todos os elementos do array devem ser números.');
     }
     return Math.max(...array);
+}
+
+export{
+    maiorNumero
 }

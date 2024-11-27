@@ -1,5 +1,5 @@
 // somaArray.test.js
-import { somaArray } from '../somarelementos'; // Ajuste o caminho se necessário
+import { somaArray } from '../somarelementos'; 
 
 describe('Função somaArray', () => {
     it('deve retornar a soma de um array de números positivos', () => {

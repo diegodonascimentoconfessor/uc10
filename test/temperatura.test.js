@@ -1,5 +1,5 @@
 
-import { celsiusParaFahrenheit } from '../temperatura'; // Ajuste o caminho se necessário
+import { celsiusParaFahrenheit } from '../temperatura'; 
 
 describe('Função celsiusParaFahrenheit', () => {
     it('deve converter 0°C para 32°F', () => {

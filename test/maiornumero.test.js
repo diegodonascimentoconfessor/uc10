@@ -1,3 +1,4 @@
+
 import { maiorNumero } from '../maiornumero'; // Ajuste o caminho conforme necessário
 
 describe('Função maiorNumero', () => {
@@ -7,27 +8,27 @@ describe('Função maiorNumero', () => {
         expect(maiorNumero(array)).toBe(esperado);
     });
 
-    test('deve retornar o maior número em um array com números negativos', () => {
+    it('deve retornar o maior número em um array com números negativos', () => {
         const array = [-1, -2, -3];
         const esperado = -1;
         expect(maiorNumero(array)).toBe(esperado);
     });
 
-    test('deve retornar o único número em um array com apenas um número', () => {
+    it('deve retornar o único número em um array com apenas um número', () => {
         const array = [7];
         const esperado = 7;
         expect(maiorNumero(array)).toBe(esperado);
     });
 
-    test('deve lançar um erro se o array for vazio', () => {
+    it('deve lançar um erro se o array for vazio', () => {
         expect(() => maiorNumero([])).toThrow('O argumento deve ser um array não vazio.');
     });
 
-    test('deve lançar um erro se o argumento não for um array', () => {
+    it('deve lançar um erro se o argumento não for um array', () => {
         expect(() => maiorNumero(123)).toThrow('O argumento deve ser um array não vazio.');
     });
 
-    test('deve lançar um erro se algum elemento do array não for um número', () => {
+    it('deve lançar um erro se algum elemento do array não for um número', () => {
         const array = [1, 2, '3'];
         expect(() => maiorNumero(array)).toThrow('Todos os elementos do array devem ser números.');
     });
