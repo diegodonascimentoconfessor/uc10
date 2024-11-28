@@ -1,4 +1,4 @@
-// calcularMedia.test.js
+
 import { calcularMedia } from '../calcularmedia'; 
 
 describe('Função calcularMedia', () => {

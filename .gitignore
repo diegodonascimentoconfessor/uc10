@@ -1,5 +1,5 @@
 echo "
-# Diretório de dependências do Node
+# Diretório de dependências do Nod
 node_modules/
 
 " > .gitignore
