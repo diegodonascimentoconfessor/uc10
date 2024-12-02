@@ -13,7 +13,6 @@ describe('Integração entre exibirModeloVeiculo() e buscarVeiculoPorId()', () =
 
     const modelo4 = exibirModeloVeiculo(4);
     expect(modelo4).toEqual('Fiesta');
-
     const modelo5 = exibirModeloVeiculo(5);
     expect(modelo5).toEqual('Onix');
 
