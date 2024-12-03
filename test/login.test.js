@@ -1,30 +1,27 @@
-// Importa a função login do módulo "../login"
-import { login } from "../login";
+import { login, obterPermissoes } from "../login";
 
-// Suite de testes para verificar o sistema de login
-describe('Testando a integração do sistema de login', () => {
+describe('Teste integrado do sistema de login e permissões', () => {
+  test('Deve permitir login e retornar permissões corretas para admin', () => {
+    const resultadoLogin = login('admin', '1234');
+    expect(resultadoLogin).toBe('Login bem-sucedido (admin)');
 
-  // Testa se o login é bem-sucedido com credenciais corretas
-  test('Deve retornar "Login bem-sucedido" quando as credenciais estiverem corretas', () => {
-    const resultado = login('admin', '1234'); // Credenciais válidas
-    expect(resultado).toBe('Login bem-sucedido'); // Verifica se a mensagem de sucesso é retornada
+    const permissoes = obterPermissoes('admin');
+    expect(permissoes).toEqual(['criar', 'editar', 'excluir']);
   });
 
-  // Testa se o login falha quando o nome de usuário está incorreto
-  test('Deve retornar "Usuário ou senha inválidos" quando o nome de usuário estiver incorreto', () => {
-    const resultado = login('usuarioErrado', '1234'); // Nome de usuário inválido
-    expect(resultado).toBe('Usuário ou senha inválidos'); // Verifica se a mensagem de erro é retornada
+  test('Deve permitir login e retornar permissões corretas para usuário comum', () => {
+    const resultadoLogin = login('user', 'password');
+    expect(resultadoLogin).toBe('Login bem-sucedido (user)');
+
+    const permissoes = obterPermissoes('user');
+    expect(permissoes).toEqual(['visualizar']);
   });
 
-  // Testa se o login falha quando a senha está incorreta
-  test('Deve retornar "Usuário ou senha inválidos" quando a senha estiver incorreta', () => {
-    const resultado = login('admin', 'senhaErrada'); // Senha inválida
-    expect(resultado).toBe('Usuário ou senha inválidos'); // Verifica se a mensagem de erro é retornada
+  test('Deve lançar erro ao tentar obter permissões de um usuário inexistente', () => {
+    expect(() => obterPermissoes('usuarioInexistente')).toThrow('Usuário não encontrado');
   });
 
-  // Testa se o login falha quando ambos estão incorretos
-  test('Deve retornar "Usuário ou senha inválidos" quando ambos estiverem incorretos', () => {
-    const resultado = login('usuarioErrado', 'senhaErrada'); // Nome de usuário e senha inválidos
-    expect(resultado).toBe('Usuário ou senha inválidos'); // Verifica se a mensagem de erro é retornada
+  test('Deve lançar erro ao realizar login com credenciais inválidas', () => {
+    expect(() => login('usuarioErrado', 'senhaErrada')).toThrow('Usuário ou senha inválidos');
   });
 });

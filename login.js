@@ -1,21 +1,33 @@
-// Lista de usuários cadastrados com username e senha
+// Banco de dados simulado
 const usuarios = [
-  { username: 'admin', password: '1234' }, // Usuário administrador
-  { username: 'user', password: 'password' } // Usuário comum
+  { username: 'admin', password: '1234', role: 'admin' },
+  { username: 'user', password: 'password', role: 'user' }
 ];
 
 // Função de login
-function login(username, password) {
-  // Busca um usuário na lista que corresponda ao username e password fornecidos
+export function login(username, password) {
   const usuario = usuarios.find(u => u.username === username && u.password === password);
-  
-  // Verifica se encontrou um usuário correspondente
   if (usuario) {
-    return 'Login bem-sucedido'; // Retorna mensagem de sucesso se as credenciais forem válidas
+    return `Login bem-sucedido (${usuario.role})`;
   } else {
-    return 'Usuário ou senha inválidos'; // Retorna mensagem de erro para credenciais inválidas
+    throw new Error('Usuário ou senha inválidos');
   }
 }
 
-// Exporta a função para uso em outros módulos
-export { login };
+// Função para obter permissões
+export function obterPermissoes(username) {
+  const usuario = usuarios.find(u => u.username === username);
+  if (!usuario) {
+    throw new Error('Usuário não encontrado');
+  }
+
+  // Simulação de permissões por papel
+  if (usuario.role === 'admin') {
+    return ['criar', 'editar', 'excluir'];
+  } else if (usuario.role === 'user') {
+    return ['visualizar'];
+  } else {
+    return [];
+  }
+}
+
