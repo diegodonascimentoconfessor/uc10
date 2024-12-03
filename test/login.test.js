@@ -1,6 +1,6 @@
 import { login } from "../login";
 
-describe('Testando a função de login', () => {
+describe('Testando a integração do sistema de login', () => {
 
   test('Deve retornar "Login bem-sucedido" quando as credenciais estiverem corretas', () => {
     const resultado = login('admin', '1234');
